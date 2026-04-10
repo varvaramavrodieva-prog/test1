@@ -1,121 +1,303 @@
 import 'package:flutter/material.dart';
+// import 'menu_screen.dart'; // Раскомментируйте, когда экран будет готов
+// import 'email_detail_screen.dart'; // Раскомментируйте, когда экран будет готов
 
+// ==================== ТОЧКА ВХОДА ====================
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+      title: 'Email App',
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: const Color(0xFF1E1B18),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF1E1B18),
+          elevation: 0,
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const EmailListScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+class EmailListScreen extends StatefulWidget {
+  const EmailListScreen({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<EmailListScreen> createState() => _EmailListScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+class _EmailListScreenState extends State<EmailListScreen> {
+  final List<Map<String, dynamic>> emails = [
+    {
+      'sender': 'GitLab',
+      'subject': 'gitlab.com sign-in from new location',
+      'preview': 'Someone signed in to your gitlab.com ac...',
+      'time': '10:14',
+      'isRead': false,
+      'icon': Icons.account_circle,
+    },
+    {
+      'sender': 'Оповещения',
+      'subject': 'Оповещения о вакансиях Linked...',
+      'preview': '',
+      'time': '',
+      'isRead': false,
+      'icon': Icons.info_outline,
+      'badge': '75 нов.',
+    },
+    {
+      'sender': 'App Store Connect',
+      'subject': 'The uploaded build for Diwo App has o...',
+      'preview': 'Hello, We noticed one or more issues wit...',
+      'time': '00:22',
+      'isRead': false,
+      'icon': Icons.apple,
+    },
+    {
+      'sender': 'LinkedIn',
+      'subject': 'Оповещение, связанное с безопасно...',
+      'preview': 'Оповещение, связанное с безопасност...',
+      'time': '9 апр.',
+      'isRead': false,
+      'icon': Icons.business,
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
+      backgroundColor: const Color(0xFF1E1B18),
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        backgroundColor: const Color(0xFF1E1B18),
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.menu, color: Colors.white),
+          onPressed: () {
+            // TODO: Раскомментировать, когда экран меню будет готов
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => const MenuScreen()),
+            // );
+            print('Открыть меню');
+          },
+        ),
+        title: Container(
+          height: 40,
+          decoration: BoxDecoration(
+            color: const Color(0xFF2D2925),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: const Center(
+            child: Text(
+              'Поиск в почте',
+              style: TextStyle(color: Colors.grey, fontSize: 16),
+            ),
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: const CircleAvatar(
+              backgroundColor: Color(0xFF2D2925),
+              child: Icon(Icons.person, color: Colors.white, size: 20),
+            ),
+            onPressed: () {
+              print('Профиль');
+            },
+          ),
+        ],
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: .center,
-          children: [
-            const Text('You have pushed the button this many times:'),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Несортированные',
+                style: TextStyle(color: Colors.grey[400], fontSize: 16),
+              ),
+            ),
+          ),
+          Expanded(
+            child: ListView.separated(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              itemCount: emails.length,
+              separatorBuilder: (context, index) => const Divider(
+                color: Color(0xFF2D2925),
+                height: 1,
+              ),
+              itemBuilder: (context, index) {
+                return _buildEmailTile(emails[index]);
+              },
+            ),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: const Color(0xFF8B6F4E),
+        onPressed: () {
+          print('Написать письмо');
+        },
+        icon: const Icon(Icons.edit),
+        label: const Text('Написать'),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: const Color(0xFF1E1B18),
+        selectedItemColor: const Color(0xFF8B6F4E),
+        unselectedItemColor: Colors.grey,
+        type: BottomNavigationBarType.fixed,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Badge(
+              label: Text('99+'),
+              backgroundColor: Colors.red,
+              child: Icon(Icons.email),
+            ),
+            label: 'Почта',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.video_call),
+            label: 'Звонки',
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildEmailTile(Map<String, dynamic> email) {
+    return ListTile(
+      contentPadding: const EdgeInsets.symmetric(vertical: 12),
+      leading: CircleAvatar(
+        backgroundColor: const Color(0xFF2D2925),
+        child: Icon(email['icon'], color: Colors.white),
+      ),
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Text(
+              email['sender'],
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Text(
+            email['time'],
+            style: TextStyle(color: Colors.grey[400], fontSize: 12),
+          ),
+        ],
+      ),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (email['badge'] != null)
+            Container(
+              margin: const EdgeInsets.only(top: 4),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              decoration: BoxDecoration(
+                color: const Color(0xFF8B6F4E),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Text(
+                email['badge'],
+                style: const TextStyle(color: Colors.white, fontSize: 12),
+              ),
+            ),
+          Text(
+            email['subject'],
+            style: const TextStyle(color: Colors.white, fontSize: 14),
+          ),
+          if (email['preview'].isNotEmpty)
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+              email['preview'],
+              style: TextStyle(color: Colors.grey[500], fontSize: 12),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+        ],
+      ),
+      trailing: IconButton(
+        icon: const Icon(Icons.star_border, color: Colors.grey),
+        onPressed: () {
+          print('В избранное: ${email['sender']}');
+        },
+      ),
+      onTap: () {
+        // TODO: Раскомментировать, когда экран письма будет готов
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) => EmailDetailScreen(emailData: email),
+        //   ),
+        // );
+        print('Открыть письмо: ${email['subject']}');
+      },
+    );
+  }
+}
+
+// ==================== ЗАГЛУШКИ ДЛЯ ЭКРАНОВ КОЛЛЕГ ====================
+// Удалите эти классы, когда подключите реальные файлы
+
+class MenuScreen extends StatelessWidget {
+  const MenuScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Меню')),
+      body: const Center(
+        child: Text(
+          'Экран меню — в разработке',
+          style: TextStyle(fontSize: 18),
+        ),
+      ),
+    );
+  }
+}
+
+class EmailDetailScreen extends StatelessWidget {
+  final Map<String, dynamic> emailData;
+
+  const EmailDetailScreen({Key? key, required this.emailData}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(emailData['sender'] ?? 'Письмо')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              emailData['subject'] ?? '',
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'От: ${emailData['sender']}',
+              style: TextStyle(color: Colors.grey[400]),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              emailData['preview'] ?? 'Содержимое письма...',
+              style: const TextStyle(fontSize: 16),
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
