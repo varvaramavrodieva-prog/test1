@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class EmailMenu extends StatelessWidget {
-  const EmailMenu({super.key});
+  const EmailMenu({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,33 +12,41 @@ class EmailMenu extends StatelessWidget {
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
-              const Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Text(
-                  'Gmail',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: const Text(
+                      'Gmail',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                      ),
+                    ),
                   ),
                 ),
               ),
 
-              _buildItem(Icons.inbox, 'Несортированные', '99+'),
-              _buildItem(Icons.local_offer, 'Промоакции', '44'),
-              _buildItem(Icons.people, 'Соцсети', '5'),
-              _buildItem(Icons.info, 'Оповещения', '75'),
+              _buildItem(context, Icons.inbox, 'Несортированные', '99+'),
+              _buildItem(context, Icons.local_offer, 'Промоакции', '44'),
+              _buildItem(context, Icons.people, 'Соцсети', '5'),
+              _buildItem(context, Icons.info, 'Оповещения', '75'),
 
               const Divider(color: Colors.white30),
 
-              _buildItem(Icons.star, 'Помеченные', ''),
-              _buildItem(Icons.schedule, 'Отложенные', ''),
-              _buildItem(Icons.label, 'Важные', '84'),
-              _buildItem(Icons.shopping_bag, 'Покупки', '58'),
-              _buildItem(Icons.send, 'Отправленные', ''),
-              _buildItem(Icons.drafts, 'Черновики', '5'),
-              _buildItem(Icons.mail, 'Вся почта', '99+'),
-              _buildItem(Icons.report, 'Спам', '718'),
-              _buildItem(Icons.delete, 'Корзина', ''),
+              _buildItem(context, Icons.star, 'Помеченные', ''),
+              _buildItem(context, Icons.schedule, 'Отложенные', ''),
+              _buildItem(context, Icons.label, 'Важные', '84'),
+              _buildItem(context, Icons.shopping_bag, 'Покупки', '58'),
+              _buildItem(context, Icons.send, 'Отправленные', ''),
+              _buildItem(context, Icons.drafts, 'Черновики', '5'),
+              _buildItem(context, Icons.mail, 'Вся почта', '99+'),
+              _buildItem(context, Icons.report, 'Спам', '718'),
+              _buildItem(context, Icons.delete, 'Корзина', ''),
             ],
           ),
         ),
@@ -46,7 +54,7 @@ class EmailMenu extends StatelessWidget {
     );
   }
 
-  Widget _buildItem(IconData icon, String title, String count) {
+  Widget _buildItem(BuildContext context, IconData icon, String title, String count) {
     return ListTile(
       leading: Icon(icon, color: Colors.white),
       title: Text(
@@ -67,7 +75,7 @@ class EmailMenu extends StatelessWidget {
             )
           : null,
       onTap: () {
-        Navigator.pop(context); // закрывает меню
+        Navigator.pop(context);
       },
     );
   }
