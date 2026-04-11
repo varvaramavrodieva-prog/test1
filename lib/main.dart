@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'menu_screen.dart'; // Раскомментируйте, когда экран будет готов
-// import 'email_detail_screen.dart'; // Раскомментируйте, когда экран будет готов
-
-// ==================== ТОЧКА ВХОДА ====================
 void main() {
   runApp(const MyApp());
 }
@@ -81,7 +77,7 @@ class _EmailListScreenState extends State<EmailListScreen> {
         leading: IconButton(
           icon: const Icon(Icons.menu, color: Colors.white),
           onPressed: () {
-            // TODO: Раскомментировать, когда экран меню будет готов
+           
             // Navigator.push(
             //   context,
             //   MaterialPageRoute(builder: (context) => const MenuScreen()),
@@ -235,7 +231,7 @@ class _EmailListScreenState extends State<EmailListScreen> {
         },
       ),
       onTap: () {
-        // TODO: Раскомментировать, когда экран письма будет готов
+      
         // Navigator.push(
         //   context,
         //   MaterialPageRoute(
@@ -248,8 +244,6 @@ class _EmailListScreenState extends State<EmailListScreen> {
   }
 }
 
-// ==================== ЗАГЛУШКИ ДЛЯ ЭКРАНОВ КОЛЛЕГ ====================
-// Удалите эти классы, когда подключите реальные файлы
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({Key? key}) : super(key: key);
