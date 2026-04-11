@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'EmailMenu.dart';
+import 'EmailScreen.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -234,12 +235,12 @@ class _EmailListScreenState extends State<EmailListScreen> {
       ),
       onTap: () {
       
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => EmailDetailScreen(emailData: email),
-        //   ),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => EmailScreen(),
+          ),
+        );
         print('Открыть письмо: ${email['subject']}');
       },
     );

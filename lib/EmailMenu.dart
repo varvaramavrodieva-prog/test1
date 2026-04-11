@@ -75,7 +75,7 @@ class EmailMenu extends StatelessWidget {
             )
           : null,
       onTap: () {
-        Navigator.pop(context);
+        // Navigator.pop(context);
       },
     );
   }

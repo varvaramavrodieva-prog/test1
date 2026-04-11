@@ -11,7 +11,7 @@ class EmailScreen extends StatelessWidget {
         backgroundColor: const Color(0xFF2C2420),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Color(0xFFD4A574)),
-          onPressed: () {},
+          onPressed: () {Navigator.pop(context);},
         ),
         actions: [
           IconButton(
