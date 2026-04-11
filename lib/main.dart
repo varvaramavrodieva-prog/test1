@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'EmailMenu.dart';
 void main() {
-  runApp(const GitLabEmailApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -70,7 +71,7 @@ class _EmailListScreenState extends State<EmailListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const EmailMenu(), //я вставила это
+      drawer: const EmailMenu(),
       backgroundColor: const Color(0xFF1E1B18),
       appBar: AppBar(
         backgroundColor: const Color(0xFF1E1B18),
@@ -79,10 +80,10 @@ class _EmailListScreenState extends State<EmailListScreen> {
           icon: const Icon(Icons.menu, color: Colors.white),
           onPressed: () {
            
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => const MenuScreen()),
-            // он мне сказал это не надо );
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const EmailMenu()),
+            );
             print('Открыть меню');
           },
         ),

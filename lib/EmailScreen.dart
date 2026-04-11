@@ -1,22 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const GitLabEmailApp());
-}
-
-class GitLabEmailApp extends StatelessWidget {
-  const GitLabEmailApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedBanner: false,
-      theme: ThemeData.dark(),
-      home: const EmailScreen(),
-    );
-  }
-}
-
 class EmailScreen extends StatelessWidget {
   const EmailScreen({super.key});
 
