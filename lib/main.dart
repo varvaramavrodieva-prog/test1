@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'menu_screen.dart'; // Раскомментируйте, когда экран будет готов
+import 'email_menu.dart'; 
 // import 'email_detail_screen.dart'; // Раскомментируйте, когда экран будет готов
 void main() {
   runApp(const MyApp());
