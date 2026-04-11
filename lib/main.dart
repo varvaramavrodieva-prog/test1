@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'menu_screen.dart'; // Раскомментируйте, когда экран будет готов
+import 'email_menu.dart'; //я вставила это// Раскомментируйте, когда экран будет готов
 // import 'email_detail_screen.dart'; // Раскомментируйте, когда экран будет готов
 
 // ==================== ТОЧКА ВХОДА ====================
@@ -74,6 +74,7 @@ class _EmailListScreenState extends State<EmailListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const EmailMenu(), //я вставила это
       backgroundColor: const Color(0xFF1E1B18),
       appBar: AppBar(
         backgroundColor: const Color(0xFF1E1B18),
@@ -85,7 +86,7 @@ class _EmailListScreenState extends State<EmailListScreen> {
             // Navigator.push(
             //   context,
             //   MaterialPageRoute(builder: (context) => const MenuScreen()),
-            // );
+            // он мне сказал это не надо );
             print('Открыть меню');
           },
         ),
@@ -251,22 +252,7 @@ class _EmailListScreenState extends State<EmailListScreen> {
 // ==================== ЗАГЛУШКИ ДЛЯ ЭКРАНОВ КОЛЛЕГ ====================
 // Удалите эти классы, когда подключите реальные файлы
 
-class MenuScreen extends StatelessWidget {
-  const MenuScreen({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Меню')),
-      body: const Center(
-        child: Text(
-          'Экран меню — в разработке',
-          style: TextStyle(fontSize: 18),
-        ),
-      ),
-    );
-  }
-}
 
 class EmailDetailScreen extends StatelessWidget {
   final Map<String, dynamic> emailData;
